@@ -3,7 +3,7 @@
 #include "sc_config.h"
 
 using namespace daisy;
-using namespace daisy::seed;
+// using namespace daisy::seed;
 
 DaisySeed hw;
 
@@ -25,7 +25,7 @@ int main(void)
     Led led;
 
     // Configure pin for LED.
-    led.Init(hw.GetPin(25), false);
+    led.Init(seed::D18, false);
 
     // Configure the ADC for the potentiometer
     AdcChannelConfig adc_cfg;
@@ -59,6 +59,8 @@ int main(void)
             debug_print("Potentiometer Value: %d%%", percentage_value);
             debug_print("LED Brightness: " FLT_FMT(3), FLT_VAR(3, brightness));;
             // Delay to avoid flooding the serial output
+            // NOTE: This delay will impact the LED brightness.
+            // Only use it for debugging purposes.
             System::Delay(250);
         }
     }

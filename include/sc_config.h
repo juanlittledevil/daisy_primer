@@ -2,6 +2,6 @@
 #define SC_CONFIG_H
 
 // Define global configuration variables
-#define DEBUG true
+#define DEBUG false
 
 #endif // SC_CONFIG_H
