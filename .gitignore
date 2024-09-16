@@ -17,8 +17,7 @@
 *.map
 *.lst
 
-# Ignore IDE-specific files
-.vscode/
+# Ignore IDE-specific files except for VS Code settings
 .idea/
 *.code-workspace
 
@@ -39,3 +38,6 @@ Thumbs.db
 *.zip
 *.tar.gz
 *.7z
+
+# Include VS Code settings
+!.vscode/
