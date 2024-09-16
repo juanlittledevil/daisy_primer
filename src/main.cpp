@@ -10,10 +10,22 @@ DaisySeed hw;
 int main(void)
 {
     // Initialize the Daisy Seed
+    hw.Configure();
     hw.Init();
 
-    // Start the Serial Logger
-    hw.StartLog();
+    if (DEBUG) 
+    {
+        // Start the Serial Logger
+        hw.StartLog();
+
+        // Print the Daisy Seed information
+        debug_print("Daisy Seed Initialized");
+    }
+
+    Led led;
+
+    // Configure pin for LED.
+    led.Init(hw.GetPin(25), false);
 
     // Configure the ADC for the potentiometer
     AdcChannelConfig adc_cfg;
@@ -30,9 +42,6 @@ int main(void)
         // Read the potentiometer value
         uint16_t pot_value = hw.adc.Get(0);
 
-        // Print the raw ADC value for debugging
-        debug_print("Raw ADC Value: %d", pot_value);
-
         // Normalize the potentiometer value to a range of 0.0 to 1.0
         float normalized_value = static_cast<float>(pot_value) / 65535.0f;
         
@@ -40,13 +49,15 @@ int main(void)
         int percentage_value = static_cast<int>(normalized_value * 100);
 
         // Set the USER LED brightness based on the potentiometer value
-        hw.SetLed(normalized_value);
-
-        // Print the potentiometer value as a percentage
-        debug_print("Potentiometer Value: %d%%", percentage_value);
+        float brightness = hw.adc.GetFloat(0);
+        led.Set(brightness);
+        led.Update();
 
         if (DEBUG)
         {
+            debug_print("Raw ADC Value: %d", pot_value);
+            debug_print("Potentiometer Value: %d%%", percentage_value);
+            debug_print("LED Brightness: " FLT_FMT(3), FLT_VAR(3, brightness));;
             // Delay to avoid flooding the serial output
             System::Delay(250);
         }
