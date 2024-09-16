@@ -102,7 +102,7 @@
       "type": "shell"
     },
     {
-      "label": "Serial Monitor",
+      "label": "serial_monitor",
       "type": "shell",
       "command": "screen",
       "args": [

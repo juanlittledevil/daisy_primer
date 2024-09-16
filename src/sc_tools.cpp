@@ -5,7 +5,6 @@
 #include <cstring> // For strstr
 
 using namespace daisy;
-using namespace daisy::seed;
 
 extern DaisySeed hw;
 
