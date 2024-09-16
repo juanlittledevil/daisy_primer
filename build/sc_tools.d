@@ -1,4 +1,4 @@
-build/main.o: src/main.cpp \
+build/sc_tools.o: src/sc_tools.cpp \
  ../../libDaisy//Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  ../../libDaisy//Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  ../../libDaisy//Drivers/CMSIS/Include/core_cm7.h \
@@ -93,18 +93,19 @@ build/main.o: src/main.cpp \
  ../../libDaisy//Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  ../../libDaisy//Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  ../../libDaisy//Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- ../../libDaisy//src/daisy_seed.h ../../libDaisy//src/daisy.h \
- ../../libDaisy//src/daisy_core.h ../../libDaisy//src/version.h \
- ../../libDaisy//src/sys/system.h ../../libDaisy//src/per/tim.h \
- ../../libDaisy//src/per/qspi.h ../../libDaisy//src/per/dac.h \
- ../../libDaisy//src/per/gpio.h ../../libDaisy//src/dev/leddriver.h \
- ../../libDaisy//src/per/i2c.h ../../libDaisy//src/dev/mpr121.h \
- ../../libDaisy//src/dev/sdram.h ../../libDaisy//src/dev/sr_4021.h \
- ../../libDaisy//src/sys/system.h ../../libDaisy//src/hid/audio.h \
- ../../libDaisy//src/per/sai.h ../../libDaisy//src/util/unique_id.h \
- ../../libDaisy//src/per/adc.h ../../libDaisy//src/per/uart.h \
- ../../libDaisy//src/hid/midi.h ../../libDaisy//src/util/ringbuffer.h \
- ../../libDaisy//src/util/FIFO.h ../../libDaisy//src/hid/midi_parser.h \
+ include/sc_tools.h include/sc_config.h ../../libDaisy//src/daisy_seed.h \
+ ../../libDaisy//src/daisy.h ../../libDaisy//src/daisy_core.h \
+ ../../libDaisy//src/version.h ../../libDaisy//src/sys/system.h \
+ ../../libDaisy//src/per/tim.h ../../libDaisy//src/per/qspi.h \
+ ../../libDaisy//src/per/dac.h ../../libDaisy//src/per/gpio.h \
+ ../../libDaisy//src/dev/leddriver.h ../../libDaisy//src/per/i2c.h \
+ ../../libDaisy//src/dev/mpr121.h ../../libDaisy//src/dev/sdram.h \
+ ../../libDaisy//src/dev/sr_4021.h ../../libDaisy//src/sys/system.h \
+ ../../libDaisy//src/hid/audio.h ../../libDaisy//src/per/sai.h \
+ ../../libDaisy//src/util/unique_id.h ../../libDaisy//src/per/adc.h \
+ ../../libDaisy//src/per/uart.h ../../libDaisy//src/hid/midi.h \
+ ../../libDaisy//src/util/ringbuffer.h ../../libDaisy//src/util/FIFO.h \
+ ../../libDaisy//src/hid/midi_parser.h \
  ../../libDaisy//src/hid/MidiEvent.h ../../libDaisy//src/hid/usb_midi.h \
  ../../libDaisy//src/hid/usb.h ../../libDaisy//src/sys/dma.h \
  ../../libDaisy//src/hid/encoder.h ../../libDaisy//src/hid/switch.h \
@@ -147,8 +148,7 @@ build/main.o: src/main.cpp \
  ../../libDaisy//src/per/qspi.h \
  ../../libDaisy//src/util/VoctCalibration.h \
  ../../libDaisy//src/util/WaveTableLoader.h \
- ../../libDaisy//src/sys/fatfs.h ../../libDaisy//src/util/WavWriter.h \
- include/sc_tools.h include/sc_config.h include/sc_config.h
+ ../../libDaisy//src/sys/fatfs.h ../../libDaisy//src/util/WavWriter.h
 ../../libDaisy//Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 ../../libDaisy//Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h:
 ../../libDaisy//Drivers/CMSIS/Include/core_cm7.h:
@@ -243,6 +243,8 @@ build/main.o: src/main.cpp \
 ../../libDaisy//Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 ../../libDaisy//Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
 ../../libDaisy//Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h:
+include/sc_tools.h:
+include/sc_config.h:
 ../../libDaisy//src/daisy_seed.h:
 ../../libDaisy//src/daisy.h:
 ../../libDaisy//src/daisy_core.h:
@@ -329,6 +331,3 @@ build/main.o: src/main.cpp \
 ../../libDaisy//src/util/WaveTableLoader.h:
 ../../libDaisy//src/sys/fatfs.h:
 ../../libDaisy//src/util/WavWriter.h:
-include/sc_tools.h:
-include/sc_config.h:
-include/sc_config.h:

@@ -1,0 +1,341 @@
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"sc_tools.cpp"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata._Z11debug_printPKcz.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 257300   		.ascii	"%s\000"
+  22              		.section	.text._Z11debug_printPKcz,"ax",%progbits
+  23              		.align	1
+  24              		.p2align 2,,3
+  25              		.global	_Z11debug_printPKcz
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	_Z11debug_printPKcz:
+  31              	.LVL0:
+  32              	.LFB2561:
+  33              		.file 1 "src/sc_tools.cpp"
+   1:src/sc_tools.cpp **** #include "sc_tools.h"
+   2:src/sc_tools.cpp **** #include "daisy_seed.h"
+   3:src/sc_tools.cpp **** #include <cstdarg> // For va_list, va_start, va_end
+   4:src/sc_tools.cpp **** #include <cstdio>  // For vsnprintf
+   5:src/sc_tools.cpp **** 
+   6:src/sc_tools.cpp **** using namespace daisy;
+   7:src/sc_tools.cpp **** using namespace daisy::seed;
+   8:src/sc_tools.cpp **** 
+   9:src/sc_tools.cpp **** extern DaisySeed hw;
+  10:src/sc_tools.cpp **** 
+  11:src/sc_tools.cpp **** void debug_print(const char* format, ...)
+  12:src/sc_tools.cpp **** {
+  34              		.loc 1 12 1 view -0
+  35              		.cfi_startproc
+  36              		@ args = 4, pretend = 16, frame = 264
+  37              		@ frame_needed = 0, uses_anonymous_args = 1
+  13:src/sc_tools.cpp ****     if (DEBUG)
+  38              		.loc 1 13 5 view .LVU1
+  39              	.LBB5:
+  14:src/sc_tools.cpp ****     {
+  15:src/sc_tools.cpp ****         char buffer[256];
+  40              		.loc 1 15 9 view .LVU2
+  16:src/sc_tools.cpp ****         va_list args;
+  41              		.loc 1 16 9 view .LVU3
+  17:src/sc_tools.cpp ****         va_start(args, format);
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 2
+
+
+  42              		.loc 1 17 9 view .LVU4
+  43              	.LBE5:
+  12:src/sc_tools.cpp ****     if (DEBUG)
+  44              		.loc 1 12 1 is_stmt 0 view .LVU5
+  45 0000 0FB4     		push	{r0, r1, r2, r3}
+  46              		.cfi_def_cfa_offset 16
+  47              		.cfi_offset 0, -16
+  48              		.cfi_offset 1, -12
+  49              		.cfi_offset 2, -8
+  50              		.cfi_offset 3, -4
+  51 0002 00B5     		push	{lr}
+  52              		.cfi_def_cfa_offset 20
+  53              		.cfi_offset 14, -20
+  54 0004 C3B0     		sub	sp, sp, #268
+  55              		.cfi_def_cfa_offset 288
+  56              	.LBB8:
+  18:src/sc_tools.cpp ****         vsnprintf(buffer, sizeof(buffer), format, args);
+  57              		.loc 1 18 18 view .LVU6
+  58 0006 4FF48071 		mov	r1, #256
+  59              	.LBE8:
+  12:src/sc_tools.cpp ****     if (DEBUG)
+  60              		.loc 1 12 1 view .LVU7
+  61 000a 44AB     		add	r3, sp, #272
+  62              	.LBB9:
+  63              		.loc 1 18 18 view .LVU8
+  64 000c 02A8     		add	r0, sp, #8
+  65              	.LBE9:
+  12:src/sc_tools.cpp ****     if (DEBUG)
+  66              		.loc 1 12 1 view .LVU9
+  67 000e 53F8042B 		ldr	r2, [r3], #4
+  68              	.LBB10:
+  17:src/sc_tools.cpp ****         va_start(args, format);
+  69              		.loc 1 17 9 view .LVU10
+  70 0012 0193     		str	r3, [sp, #4]
+  71              		.loc 1 18 9 is_stmt 1 view .LVU11
+  72              		.loc 1 18 18 is_stmt 0 view .LVU12
+  73 0014 FFF7FEFF 		bl	vsnprintf
+  74              	.LVL1:
+  19:src/sc_tools.cpp ****         va_end(args);
+  75              		.loc 1 19 9 is_stmt 1 view .LVU13
+  20:src/sc_tools.cpp ****         hw.PrintLine("%s", buffer);
+  76              		.loc 1 20 9 view .LVU14
+  77              	.LBB6:
+  78              	.LBI6:
+  79              		.file 2 "../../libDaisy//src/daisy_seed.h"
+   1:../../libDaisy//src/daisy_seed.h **** #pragma once
+   2:../../libDaisy//src/daisy_seed.h **** #ifndef DSY_SEED_H
+   3:../../libDaisy//src/daisy_seed.h **** #define DSY_SEED_H
+   4:../../libDaisy//src/daisy_seed.h **** 
+   5:../../libDaisy//src/daisy_seed.h **** #include "daisy.h"
+   6:../../libDaisy//src/daisy_seed.h **** 
+   7:../../libDaisy//src/daisy_seed.h **** //Uncomment this out if you're still using the rev2 hardware
+   8:../../libDaisy//src/daisy_seed.h **** //#define SEED_REV2
+   9:../../libDaisy//src/daisy_seed.h **** 
+  10:../../libDaisy//src/daisy_seed.h **** namespace daisy
+  11:../../libDaisy//src/daisy_seed.h **** {
+  12:../../libDaisy//src/daisy_seed.h **** /**
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 3
+
+
+  13:../../libDaisy//src/daisy_seed.h ****    @brief This is the higher-level interface for the Daisy board. \n 
+  14:../../libDaisy//src/daisy_seed.h ****     All basic peripheral configuration/initialization is setup here. \n
+  15:../../libDaisy//src/daisy_seed.h **** 
+  16:../../libDaisy//src/daisy_seed.h ****    @ingroup boards
+  17:../../libDaisy//src/daisy_seed.h **** */
+  18:../../libDaisy//src/daisy_seed.h **** class DaisySeed
+  19:../../libDaisy//src/daisy_seed.h **** {
+  20:../../libDaisy//src/daisy_seed.h ****   public:
+  21:../../libDaisy//src/daisy_seed.h ****     DaisySeed() {}
+  22:../../libDaisy//src/daisy_seed.h ****     ~DaisySeed() {}
+  23:../../libDaisy//src/daisy_seed.h **** 
+  24:../../libDaisy//src/daisy_seed.h ****     /** This function used to provide a pre-initialization configuraiton 
+  25:../../libDaisy//src/daisy_seed.h ****      *  it has since been deprecated, and does nothing.
+  26:../../libDaisy//src/daisy_seed.h ****      */
+  27:../../libDaisy//src/daisy_seed.h ****     void Configure();
+  28:../../libDaisy//src/daisy_seed.h **** 
+  29:../../libDaisy//src/daisy_seed.h ****     /** 
+  30:../../libDaisy//src/daisy_seed.h ****     Initializes the Daisy Seed and the following peripherals:
+  31:../../libDaisy//src/daisy_seed.h ****     SDRAM, QSPI, 24-bit 48kHz Audio via AK4556, Internal USB,
+  32:../../libDaisy//src/daisy_seed.h ****     as well as the built-in LED and Testpoint.
+  33:../../libDaisy//src/daisy_seed.h **** 
+  34:../../libDaisy//src/daisy_seed.h ****     ADCs, DACs, and other special peripherals (such as I2C, SPI, etc.)
+  35:../../libDaisy//src/daisy_seed.h ****     can be initialized using their specific initializers within libdaisy
+  36:../../libDaisy//src/daisy_seed.h ****     for a specific application.
+  37:../../libDaisy//src/daisy_seed.h ****     */
+  38:../../libDaisy//src/daisy_seed.h ****     void Init(bool boost = false);
+  39:../../libDaisy//src/daisy_seed.h **** 
+  40:../../libDaisy//src/daisy_seed.h ****     /** 
+  41:../../libDaisy//src/daisy_seed.h ****     Deinitializes all peripherals automatically handled by `Init`.
+  42:../../libDaisy//src/daisy_seed.h ****     */
+  43:../../libDaisy//src/daisy_seed.h ****     void DeInit();
+  44:../../libDaisy//src/daisy_seed.h **** 
+  45:../../libDaisy//src/daisy_seed.h ****     /** 
+  46:../../libDaisy//src/daisy_seed.h ****     Wait some ms before going on.
+  47:../../libDaisy//src/daisy_seed.h ****     \param del Delay time in ms.
+  48:../../libDaisy//src/daisy_seed.h ****     */
+  49:../../libDaisy//src/daisy_seed.h ****     void DelayMs(size_t del);
+  50:../../libDaisy//src/daisy_seed.h **** 
+  51:../../libDaisy//src/daisy_seed.h ****     /** 
+  52:../../libDaisy//src/daisy_seed.h ****     Returns the gpio_pin corresponding to the index 0-31.
+  53:../../libDaisy//src/daisy_seed.h ****     For the given GPIO on the Daisy Seed (labeled 1-32 in docs).
+  54:../../libDaisy//src/daisy_seed.h ****     */
+  55:../../libDaisy//src/daisy_seed.h ****     static dsy_gpio_pin GetPin(uint8_t pin_idx);
+  56:../../libDaisy//src/daisy_seed.h **** 
+  57:../../libDaisy//src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
+  58:../../libDaisy//src/daisy_seed.h ****     the specified callback will get called whenever
+  59:../../libDaisy//src/daisy_seed.h ****     new data is ready to be prepared.
+  60:../../libDaisy//src/daisy_seed.h ****     */
+  61:../../libDaisy//src/daisy_seed.h ****     void StartAudio(AudioHandle::InterleavingAudioCallback cb);
+  62:../../libDaisy//src/daisy_seed.h **** 
+  63:../../libDaisy//src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
+  64:../../libDaisy//src/daisy_seed.h ****     the specified callback will get called whenever
+  65:../../libDaisy//src/daisy_seed.h ****     new data is ready to be prepared.
+  66:../../libDaisy//src/daisy_seed.h ****     This will use the newer non-interleaved callback.
+  67:../../libDaisy//src/daisy_seed.h ****     */
+  68:../../libDaisy//src/daisy_seed.h ****     void StartAudio(AudioHandle::AudioCallback cb);
+  69:../../libDaisy//src/daisy_seed.h **** 
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 4
+
+
+  70:../../libDaisy//src/daisy_seed.h ****     /** Changes to a new interleaved callback
+  71:../../libDaisy//src/daisy_seed.h ****      */
+  72:../../libDaisy//src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::InterleavingAudioCallback cb);
+  73:../../libDaisy//src/daisy_seed.h **** 
+  74:../../libDaisy//src/daisy_seed.h ****     /** Changes to a new multichannel callback
+  75:../../libDaisy//src/daisy_seed.h ****      */
+  76:../../libDaisy//src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::AudioCallback cb);
+  77:../../libDaisy//src/daisy_seed.h **** 
+  78:../../libDaisy//src/daisy_seed.h ****     /** Stops the audio if it is running. */
+  79:../../libDaisy//src/daisy_seed.h ****     void StopAudio();
+  80:../../libDaisy//src/daisy_seed.h **** 
+  81:../../libDaisy//src/daisy_seed.h ****     /** Updates the Audio Sample Rate, and reinitializes.
+  82:../../libDaisy//src/daisy_seed.h ****      ** Audio must be stopped for this to work.
+  83:../../libDaisy//src/daisy_seed.h ****      */
+  84:../../libDaisy//src/daisy_seed.h ****     void SetAudioSampleRate(SaiHandle::Config::SampleRate samplerate);
+  85:../../libDaisy//src/daisy_seed.h **** 
+  86:../../libDaisy//src/daisy_seed.h ****     /** Returns the audio sample rate in Hz as a floating point number.
+  87:../../libDaisy//src/daisy_seed.h ****      */
+  88:../../libDaisy//src/daisy_seed.h ****     float AudioSampleRate();
+  89:../../libDaisy//src/daisy_seed.h **** 
+  90:../../libDaisy//src/daisy_seed.h ****     /** Sets the number of samples processed per channel by the audio callback.
+  91:../../libDaisy//src/daisy_seed.h ****      */
+  92:../../libDaisy//src/daisy_seed.h ****     void SetAudioBlockSize(size_t blocksize);
+  93:../../libDaisy//src/daisy_seed.h **** 
+  94:../../libDaisy//src/daisy_seed.h ****     /** Returns the number of samples per channel in a block of audio. */
+  95:../../libDaisy//src/daisy_seed.h ****     size_t AudioBlockSize();
+  96:../../libDaisy//src/daisy_seed.h **** 
+  97:../../libDaisy//src/daisy_seed.h ****     /** Returns the rate in Hz that the Audio callback is called */
+  98:../../libDaisy//src/daisy_seed.h ****     float AudioCallbackRate() const;
+  99:../../libDaisy//src/daisy_seed.h **** 
+ 100:../../libDaisy//src/daisy_seed.h ****     /** Returns the SAI Handle for the Daisy Seed 
+ 101:../../libDaisy//src/daisy_seed.h ****      *  This can be useful when adding a secondary codec,
+ 102:../../libDaisy//src/daisy_seed.h ****      *  the result of this function can be passed to the audio reinit 
+ 103:../../libDaisy//src/daisy_seed.h ****      *  with an SAI2 configuration
+ 104:../../libDaisy//src/daisy_seed.h ****      */
+ 105:../../libDaisy//src/daisy_seed.h ****     const SaiHandle& AudioSaiHandle() const;
+ 106:../../libDaisy//src/daisy_seed.h **** 
+ 107:../../libDaisy//src/daisy_seed.h ****     /** Sets the state of the built in LED
+ 108:../../libDaisy//src/daisy_seed.h ****      */
+ 109:../../libDaisy//src/daisy_seed.h ****     void SetLed(bool state);
+ 110:../../libDaisy//src/daisy_seed.h **** 
+ 111:../../libDaisy//src/daisy_seed.h ****     /** Sets the state of the test point near pin 10
+ 112:../../libDaisy//src/daisy_seed.h ****      */
+ 113:../../libDaisy//src/daisy_seed.h ****     void SetTestPoint(bool state);
+ 114:../../libDaisy//src/daisy_seed.h **** 
+ 115:../../libDaisy//src/daisy_seed.h ****     /** Print formatted debug log message
+ 116:../../libDaisy//src/daisy_seed.h ****      */
+ 117:../../libDaisy//src/daisy_seed.h ****     template <typename... VA>
+ 118:../../libDaisy//src/daisy_seed.h ****     static void Print(const char* format, VA... va)
+ 119:../../libDaisy//src/daisy_seed.h ****     {
+ 120:../../libDaisy//src/daisy_seed.h ****         Log::Print(format, va...);
+ 121:../../libDaisy//src/daisy_seed.h ****     }
+ 122:../../libDaisy//src/daisy_seed.h **** 
+ 123:../../libDaisy//src/daisy_seed.h ****     /** Print formatted debug log message with automatic line termination
+ 124:../../libDaisy//src/daisy_seed.h ****     */
+ 125:../../libDaisy//src/daisy_seed.h ****     template <typename... VA>
+ 126:../../libDaisy//src/daisy_seed.h ****     static void PrintLine(const char* format, VA... va)
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 5
+
+
+  80              		.loc 2 126 17 view .LVU15
+  81              	.LBB7:
+ 127:../../libDaisy//src/daisy_seed.h ****     {
+ 128:../../libDaisy//src/daisy_seed.h ****         Log::PrintLine(format, va...);
+  82              		.loc 2 128 23 is_stmt 0 view .LVU16
+  83 0018 02A9     		add	r1, sp, #8
+  84 001a 0448     		ldr	r0, .L4
+  85 001c FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+  86              	.LVL2:
+  87              		.loc 2 128 23 view .LVU17
+  88              	.LBE7:
+  89              	.LBE6:
+  90              	.LBE10:
+  21:src/sc_tools.cpp ****     }
+  22:src/sc_tools.cpp **** }...
+  91              		.loc 1 22 1 view .LVU18
+  92 0020 43B0     		add	sp, sp, #268
+  93              		.cfi_def_cfa_offset 20
+  94              		@ sp needed
+  95 0022 5DF804EB 		ldr	lr, [sp], #4
+  96              		.cfi_restore 14
+  97              		.cfi_def_cfa_offset 16
+  98 0026 04B0     		add	sp, sp, #16
+  99              		.cfi_restore 3
+ 100              		.cfi_restore 2
+ 101              		.cfi_restore 1
+ 102              		.cfi_restore 0
+ 103              		.cfi_def_cfa_offset 0
+ 104 0028 7047     		bx	lr
+ 105              	.L5:
+ 106 002a 00BF     		.align	2
+ 107              	.L4:
+ 108 002c 00000000 		.word	.LC0
+ 109              		.cfi_endproc
+ 110              	.LFE2561:
+ 112              		.text
+ 113              	.Letext0:
+ 114              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 115              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 116              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 117              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 118              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 119              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 120              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 121              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 122              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 123              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 124              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 125              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 126              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 127              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 128              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 129              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 130              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 131              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 132              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 133              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 6
+
+
+ 134              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 135              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 136              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 137              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 138              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 139              		.file 28 "../../libDaisy//src/daisy_core.h"
+ 140              		.file 29 "../../libDaisy//src/per/tim.h"
+ 141              		.file 30 "../../libDaisy//src/sys/system.h"
+ 142              		.file 31 "../../libDaisy//src/per/qspi.h"
+ 143              		.file 32 "../../libDaisy//src/per/dac.h"
+ 144              		.file 33 "../../libDaisy//src/per/sai.h"
+ 145              		.file 34 "../../libDaisy//src/hid/audio.h"
+ 146              		.file 35 "../../libDaisy//src/per/adc.h"
+ 147              		.file 36 "../../libDaisy//src/hid/usb.h"
+ 148              		.file 37 "../../libDaisy//src/hid/logger_impl.h"
+ 149              		.file 38 "../../libDaisy//src/util/wav_format.h"
+ 150              		.file 39 "../../libDaisy//src/dev/max11300.h"
+ 151              		.file 40 "../../libDaisy//src/hid/logger.h"
+ 152              		.file 41 "../../libDaisy//src/per/gpio.h"
+ 153              		.file 42 "../../libDaisy//src/dev/sdram.h"
+ 154              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 155              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 156              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 157              		.file 46 "../../libDaisy//src/dev/sr_595.h"
+ 158              		.file 47 "<built-in>"
+ARM GAS  /var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 sc_tools.cpp
+/var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s:19     .rodata._Z11debug_printPKcz.str1.4:0000000000000000 $d
+/var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s:23     .text._Z11debug_printPKcz:0000000000000000 $t
+/var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s:30     .text._Z11debug_printPKcz:0000000000000000 _Z11debug_printPKcz
+/var/folders/zm/dfm8jqkx63j0zf3h43_v68380000gn/T//cctUmlAl.s:108    .text._Z11debug_printPKcz:000000000000002c $d
+
+UNDEFINED SYMBOLS
+vsnprintf
+_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz

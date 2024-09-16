@@ -1,5 +1,6 @@
 #include "daisy_seed.h"
-#include "sc_tools.h" // Include the new header
+#include "sc_tools.h"
+#include "sc_config.h"
 
 using namespace daisy;
 using namespace daisy::seed;
@@ -29,9 +30,12 @@ int main(void)
         // Read the potentiometer value
         uint16_t pot_value = hw.adc.Get(0);
 
+        // Print the raw ADC value for debugging
+        debug_print("Raw ADC Value: %d", pot_value);
+
         // Normalize the potentiometer value to a range of 0.0 to 1.0
         float normalized_value = static_cast<float>(pot_value) / 65535.0f;
-
+        
         // Convert normalized value to percentage
         int percentage_value = static_cast<int>(normalized_value * 100);
 
@@ -39,16 +43,12 @@ int main(void)
         hw.SetLed(normalized_value);
 
         // Print the potentiometer value as a percentage
-        hw.PrintLine("Potentiometer Value: %d%%", percentage_value);
+        debug_print("Potentiometer Value: %d%%", percentage_value);
 
-        // Convert the float to a string using the new function
-        char float_str[50];
-        FloatToString(normalized_value, float_str);
-
-        // Print the normalized float value
-        hw.PrintLine("Float?: %s", float_str);
-
-        // Delay to avoid flooding the serial output
-        System::Delay(250);
+        if (DEBUG)
+        {
+            // Delay to avoid flooding the serial output
+            System::Delay(250);
+        }
     }
 }
