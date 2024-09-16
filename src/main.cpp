@@ -3,7 +3,6 @@
 #include "sc_config.h"
 
 using namespace daisy;
-// using namespace daisy::seed;
 
 DaisySeed hw;
 
@@ -26,6 +25,7 @@ int main(void)
 
     // Configure pin for LED.
     led.Init(seed::D18, false);
+    led.SetSampleRate(10000.0f);
 
     // Configure the ADC for the potentiometer
     AdcChannelConfig adc_cfg;

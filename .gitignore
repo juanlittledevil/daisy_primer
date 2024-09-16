@@ -1,0 +1,41 @@
+# Ignore build artifacts
+/build/
+/*.o
+/*.a
+/*.so
+/*.exe
+
+# Ignore temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*.bak
+
+# Ignore generated files
+*.d
+*.map
+*.lst
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore configuration files
+*.config
+*.cfg
+
+# Ignore binary files
+*.bin
+*.elf
+*.hex
+
+# Ignore other unnecessary files
+*.zip
+*.tar.gz
+*.7z
